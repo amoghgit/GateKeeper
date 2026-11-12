@@ -56,8 +56,8 @@ export async function getBff(): Promise<BffContext> {
   if (!prodContext) {
     const clientId = process.env.COGNITO_CLIENT_ID;
     const apiBase = process.env.API_BASE_URL;
-    if (!clientId || !apiBase || !process.env.AWS_REGION) {
-      throw new ConfigurationError("AWS_PRODUCTION web tier requires COGNITO_CLIENT_ID, API_BASE_URL and AWS_REGION");
+    if (!clientId || !apiBase) {
+      throw new ConfigurationError("AWS_PRODUCTION web tier requires COGNITO_CLIENT_ID and API_BASE_URL");
     }
     prodContext = {
       mode,

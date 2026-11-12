@@ -181,7 +181,9 @@ export class DemoAuthGateway implements AuthGateway {
 export class CognitoAuthGateway implements AuthGateway {
   constructor(
     private readonly clientId: string,
-    private readonly client = new CognitoIdentityProviderClient({}),
+    private readonly client = new CognitoIdentityProviderClient({
+      region: process.env.AWS_REGION || process.env.AWS_DEFAULT_REGION || "ap-south-1",
+    }),
   ) {}
 
   private async call<T>(fn: () => Promise<T>): Promise<T> {
