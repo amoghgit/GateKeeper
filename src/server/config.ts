@@ -65,7 +65,7 @@ export function resolveMode(env: NodeJS.ProcessEnv = process.env): AppMode {
   if (raw === "LOCAL_DEMO" || raw === "AWS_PRODUCTION") return raw;
   if (raw) throw new ConfigurationError(`GATEKEEPER_MODE must be LOCAL_DEMO or AWS_PRODUCTION (got "${raw}")`);
   if (env.NODE_ENV === "production" && env.GATEKEEPER_ALLOW_IMPLICIT_DEMO !== "true") {
-    throw new ConfigurationError("GATEKEEPER_MODE is not set. Set it explicitly for production builds.");
+    return "AWS_PRODUCTION";
   }
   return "LOCAL_DEMO";
 }

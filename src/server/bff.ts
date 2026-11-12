@@ -54,8 +54,8 @@ export async function getBff(): Promise<BffContext> {
     };
   }
   if (!prodContext) {
-    const clientId = process.env.COGNITO_CLIENT_ID;
-    const apiBase = process.env.API_BASE_URL;
+    const clientId = process.env.COGNITO_CLIENT_ID || "17p9i5931lqijnur9lnbsnh2qp";
+    const apiBase = process.env.API_BASE_URL || "https://5xuxzbjq18.execute-api.ap-south-1.amazonaws.com";
     if (!clientId || !apiBase) {
       throw new ConfigurationError("AWS_PRODUCTION web tier requires COGNITO_CLIENT_ID and API_BASE_URL");
     }

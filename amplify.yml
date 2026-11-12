@@ -1,0 +1,18 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - npm ci --cache .npm --prefer-offline
+    build:
+      commands:
+        - env | grep -E '^(GATEKEEPER_MODE|COGNITO_CLIENT_ID|COGNITO_USER_POOL_ID|API_BASE_URL|TRUSTED_PROXY_COUNT)' >> .env.production
+        - npm run build
+  artifacts:
+    baseDirectory: .next
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - .next/cache/**/*
+      - .npm/**/*
