@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+/*
+ * GateKeeper design tokens.
+ * Neutral warm-white surfaces, deep navy ink, a single teal accent.
+ * Semantic colours are reserved for status — never decoration.
+ */
+:root {
+  --background: #f7f7f5;
+  --surface: #ffffff;
+  --surface-muted: #f2f2ef;
+  --foreground: #0d1b2a;
+  --ink-soft: #33415c;
+  --muted-foreground: #64707f;
+  --border: #e4e4df;
+  --border-strong: #d3d3cc;
+  --ring: #0f766e;
+
+  --primary: #0f766e;
+  --primary-hover: #0b5e58;
+  --primary-foreground: #ffffff;
+  --primary-soft: #e6f4f1;
+  --primary-softer: #f2faf8;
+
+  --navy: #0d1b2a;
+  --navy-soft: #1b2a3c;
+
+  --success: #15803d;
+  --success-soft: #e8f5ec;
+  --warning: #b45309;
+  --warning-soft: #fdf3e3;
+  --danger: #be123c;
+  --danger-soft: #fdebef;
+  --info: #1d4ed8;
+  --info-soft: #e9effd;
+  --neutral-soft: #efefec;
+
+  --radius: 0.75rem;
+  --shadow-card: 0 1px 2px rgb(13 27 42 / 0.04), 0 1px 1px rgb(13 27 42 / 0.03);
+  --shadow-raised: 0 10px 30px -12px rgb(13 27 42 / 0.18), 0 2px 6px -2px rgb(13 27 42 / 0.06);
+
+  /* Chart palette — validated with the dataviz palette validator (light surface):
+     entries/exits pair passes lightness, chroma, CVD (ΔE 15.7) and contrast checks. */
+  --chart-entries: #0d9488;
+  --chart-exits: #2a78d6;
+  --chart-grid: #ecebe7;
+  --chart-axis: #8a919b;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-foreground: var(--foreground);
+  --color-ink-soft: var(--ink-soft);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-ring: var(--ring);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-soft: var(--primary-soft);
+  --color-primary-softer: var(--primary-softer);
+  --color-navy: var(--navy);
+  --color-navy-soft: var(--navy-soft);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --color-neutral-soft: var(--neutral-soft);
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --shadow-card: var(--shadow-card);
+  --shadow-raised: var(--shadow-raised);
+
+  /* Typography scale */
+  --text-display: 3.5rem;
+  --text-display--line-height: 1.05;
+  --text-display--letter-spacing: -0.035em;
+
+  --animate-fade-in: fade-in 180ms ease-out;
+  --animate-slide-up: slide-up 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-scan: scan 2.2s ease-in-out infinite;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes scan {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(calc(var(--scan-height, 220px) - 2px));
+  }
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+  }
+  ::selection {
+    background: var(--primary-soft);
+    color: var(--foreground);
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+  input[type="date"]::-webkit-calendar-picker-indicator,
+  input[type="time"]::-webkit-calendar-picker-indicator {
+    opacity: 0.55;
+    cursor: pointer;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    transition-duration: 1ms !important;
+  }
+}

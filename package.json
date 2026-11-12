@@ -1,0 +1,82 @@
+{
+  "name": "gatekeeper",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "dev:demo": "cross-env GATEKEEPER_MODE=LOCAL_DEMO next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit -p .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:unit": "vitest run --project server tests/unit",
+    "test:integration": "vitest run --project server tests/integration",
+    "test:frontend": "vitest run --project frontend",
+    "test:coverage": "vitest run --coverage",
+    "test:e2e": "playwright test",
+    "demo:reset": "node -e \"require('fs').rmSync('.data',{recursive:true,force:true});console.log('Demo data cleared - it will be re-seeded on next start.')\""
+  },
+  "dependencies": {
+    "@aws-sdk/client-cognito-identity-provider": "^3.1167.0",
+    "@aws-sdk/client-dynamodb": "^3.1167.0",
+    "@aws-sdk/client-s3": "^3.1167.0",
+    "@aws-sdk/client-sns": "^3.1167.0",
+    "@aws-sdk/client-ssm": "^3.1167.0",
+    "@aws-sdk/lib-dynamodb": "^3.1167.0",
+    "@aws-sdk/s3-request-presigner": "^3.1167.0",
+    "@hookform/resolvers": "^7.0.6",
+    "@tanstack/react-query": "^5.107.1",
+    "aws-jwt-verify": "^5.2.1",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "jose": "^6.2.17",
+    "jsqr": "^1.4.0",
+    "lucide-react": "^1.72.0",
+    "next": "16.4.6",
+    "qrcode.react": "^4.2.0",
+    "radix-ui": "^1.8.1",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "react-hook-form": "^7.92.0",
+    "recharts": "^3.10.1",
+    "sonner": "^2.0.8",
+    "tailwind-merge": "^3.7.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.0",
+    "@tailwindcss/turbopack": "4.3.3",
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.9",
+    "@types/aws-lambda": "^8.10.164",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^6.3.0",
+    "@vitest/coverage-v8": "^4.1.12",
+    "aws-sdk-client-mock": "^4.1.0",
+    "cross-env": "^10.1.0",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.6",
+    "jsdom": "^29.1.1",
+    "prettier": "^3.10.0",
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "tailwindcss": "4.3.3",
+    "tsx": "^4.23.15",
+    "typescript": "^5",
+    "vitest": "^4.1.12"
+  },
+  "engines": {
+    "node": ">=20.9"
+  },
+  "overrides": {
+    "@typescript-eslint/typescript-estree": {
+      "minimatch": "^11.0.8"
+    }
+  }
+}

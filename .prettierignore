@@ -1,0 +1,7 @@
+.next
+.data
+node_modules
+coverage
+playwright-report
+test-results
+infrastructure/cdk.out
