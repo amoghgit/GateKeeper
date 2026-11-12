@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 /** The GateKeeper mark: a gate arch with a verified keyhole. */
 export function LogoMark({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 32 32" className={cn("size-8", className)} aria-hidden>
+    <svg viewBox="0 0 32 32" width="32" height="32" style={{ minWidth: 32, minHeight: 32 }} className={cn("size-8 shrink-0", className)} aria-hidden>
       <rect width="32" height="32" rx="9" fill="var(--navy)" />
       <path d="M9 24V14.5a7 7 0 0 1 14 0V24" fill="none" stroke="#fff" strokeWidth="2.2" strokeLinecap="round" />
       <path d="M6.5 24h19" stroke="#fff" strokeWidth="2.2" strokeLinecap="round" />
